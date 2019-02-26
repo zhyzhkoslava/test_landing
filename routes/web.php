@@ -26,7 +26,11 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function () {
 
     //admin
     Route::get('/', function () {
-        echo "Hello world";
+        if(view()->exists('admin.index')) {
+            $data = ['title' => 'Панель администратора'];
+
+            return view('admin.index', $data);
+        }
     });
 
     //admin/pages
@@ -50,7 +54,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function () {
     Route::group(['prefix' => 'portfolios'], function() {
 
 
-        Route::get('/', 'PortfolioController@execute')->name('pages');
+        Route::get('/', 'PortfolioController@execute')->name('portfolios');
 
 
         Route::match(['get', 'post'], '/add', 'PortfolioAddController@execute')->name('portfolioAdd');
@@ -63,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function () {
     Route::group(['prefix' => 'services'], function() {
 
 
-        Route::get('/', 'ServicesController@execute')->name('pages');
+        Route::get('/', 'ServicesController@execute')->name('services');
 
         Route::match(['get', 'post'], '/add', 'ServicesAddController@execute')->name('servicesAdd');
 
@@ -73,3 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function () {
     });
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
