@@ -49,6 +49,7 @@
     {!! Form::close() !!}
 
     <script>
+        CKEDITOR.replace('editor');
         $(":file").filestyle();
     </script>
 

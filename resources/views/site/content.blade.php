@@ -24,7 +24,7 @@
             </section>
             <!--Hero_Section-->
         @else
-            <section id="aboutUs"><!--Aboutus-->
+            <section id="about_Us"><!--Aboutus-->
                 <div class="inner_wrapper">
                     <div class="container">
                         <h2>{{ $page->name }}</h2>

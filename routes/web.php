@@ -45,7 +45,10 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function () {
 
 
         //admin/edit/{page}
-        Route::match(['get', 'post', 'delete'], '/edit/{page}', 'PagesEditController@execute')->name('pagesEdit');
+        Route::match(['get', 'post'], '/edit/{page}', 'PagesEditController@execute')->name('pagesEdit');
+
+        //admin/edit/{page}
+        Route::delete('/edit/{page}', 'PagesEditController@delete')->name('pagesEdit');
 
     });
 
